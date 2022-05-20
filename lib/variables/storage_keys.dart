@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 String focus_key = "focus_key";
 String short_break_key = "short_break_key";
 String long_break_key = "long_break_key";

@@ -1,7 +1,24 @@
 import 'package:get/get.dart';
+import 'package:pomoflev/helpers/time_helpers.dart';
 
 // Pomodoro variables
-late RxInt focusValue;
-late RxInt shortBreakValue;
-late RxInt longBreakValue;
-late RxInt roundsValue;
+Rx<DateTime> focusValue = Rx<DateTime>(getDateTime(minutes: '25'));
+Rx<DateTime> shortBreakValue = Rx<DateTime>(getDateTime(minutes: '05'));
+Rx<DateTime> longBreakValue = Rx<DateTime>(getDateTime(minutes: '15'));
+RxInt roundsValue = RxInt(4);
+RxBool isContinue = RxBool(false);
+RxInt currentRound = RxInt(1);
+RxBool isMuted = RxBool(false);
+Rx<DateTime> currentTime = Rx<DateTime>(
+  DateTime.parse('2020-01-01T00:25:00'),
+);
+
+// Windows variables
+RxBool isAlwaysOnTop = RxBool(false);
+RxBool isAutoStartTimer = RxBool(false);
+RxBool isAutoStartBreak = RxBool(false);
+RxBool isTickSoundTimer = RxBool(true);
+RxBool isTickSoundBreak = RxBool(true);
+RxBool isNotification = RxBool(true);
+RxBool isMinimizeToTray = RxBool(true);
+RxBool isMinimizeToTrayOnClose = RxBool(true);

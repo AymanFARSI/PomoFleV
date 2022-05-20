@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pomoflev/helpers/platform.dart';
 import 'package:pomoflev/src/initapp.dart';
 
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return platformApp();
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: platformApp(),
+    );
   }
 }
