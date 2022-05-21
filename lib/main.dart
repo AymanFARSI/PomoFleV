@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:pomoflev/helpers/platform.dart';
 import 'package:pomoflev/src/initapp.dart';
 
@@ -15,7 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: platformApp(),
+      home: OverlaySupport(
+        child: platformApp(),
+      ),
     );
   }
 }

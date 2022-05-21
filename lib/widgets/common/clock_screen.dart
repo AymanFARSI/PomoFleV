@@ -1,7 +1,8 @@
 import 'dart:async';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/material.dart';
+import 'package:pomoflev/helpers/inapp_notif.dart';
+import 'package:pomoflev/helpers/play_sound.dart';
 import 'package:pomoflev/helpers/time_helpers.dart';
 import 'package:pomoflev/helpers/platform.dart';
 import 'package:pomoflev/variables/variables.dart';
@@ -86,7 +87,12 @@ class _ClockWidgetState extends State<ClockWidget> {
           children: [
             platformTextButton(
               text: 'RESET',
-              onTap: () {
+              onTap: () async {
+                await playSound(notifSoundPath);
+                pushInAppNotification(
+                  title: 'Reset Timer',
+                  body: 'Timer has been reset',
+                );
                 currentTime.value = DateTime.parse('2020-01-01T00:25:00');
                 isContinue.value = false;
               },

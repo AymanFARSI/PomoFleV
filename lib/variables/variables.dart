@@ -22,3 +22,6 @@ RxBool isTickSoundBreak = RxBool(true);
 RxBool isNotification = RxBool(true);
 RxBool isMinimizeToTray = RxBool(true);
 RxBool isMinimizeToTrayOnClose = RxBool(true);
+
+// Notification sounds
+String notifSoundPath = 'notif_sounds/notification_sound.mp3';
