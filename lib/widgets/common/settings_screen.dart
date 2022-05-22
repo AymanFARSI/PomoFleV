@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pomoflev/src/initapp.dart';
 import 'package:pomoflev/src/storage.dart';
 import 'package:pomoflev/variables/storage_keys.dart';
 import 'package:pomoflev/variables/variables.dart';
 import 'package:pomoflev/widgets/windows/settings_item.dart';
+import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
 class ScreenScreen extends StatelessWidget {
@@ -88,22 +90,33 @@ class ScreenScreen extends StatelessWidget {
               SettingsItem(
                 title: 'Minimize to Tray',
                 isChecked: isMinimizeToTray,
-                onToggle: (v) {
+                onToggle: (v) async {
                   isMinimizeToTray.value = !isMinimizeToTray.value;
                   writeKey(minimize_to_tray_key, isMinimizeToTray.value);
+                  if (isMinimizeToTray.value) {
+                    await initSystemTray();
+                  } else {
+                    isMinimizeToTrayOnClose.value = false;
+                    await trayManager.destroy();
+                  }
                 },
               ),
               const SizedBox(height: 15),
               SettingsItem(
                 title: 'Minimize to Tray on Close',
                 isChecked: isMinimizeToTrayOnClose,
-                onToggle: (v) {
+                onToggle: (v) async {
                   isMinimizeToTrayOnClose.value =
                       !isMinimizeToTrayOnClose.value;
                   writeKey(
                     minimize_to_tray_on_close_key,
                     isMinimizeToTrayOnClose.value,
                   );
+                  if (isMinimizeToTrayOnClose.value &&
+                      !isMinimizeToTray.value) {
+                    isMinimizeToTray.value = true;
+                    await initSystemTray();
+                  }
                 },
               ),
               const SizedBox(height: 15),
