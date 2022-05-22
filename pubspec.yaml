@@ -41,10 +41,18 @@ flutter:
 
 msix_config:
   display_name: PomoFleV
+  app_installer: 
+    publish_folder_path: D:/myProjects/Flutter/pomoflev/release
+    hours_between_update_checks: 0
+    automatic_background_task: true
+    update_blocks_activation: true
+    show_prompt: true
+    force_update_from_any_version: false
   publisher_display_name: FARSI Ayman
   identity_name: com.evildave.pomoflev
-  msix_version: 0.1.0.0
-  # logo_path: assets/logos/pomoflev_logo.png
+  msix_version: 0.2.1.0
+  logo_path: assets/logos/pomoflev_logo.png
+  install_certificate: false
 
 flutter_icons:
   image_path: 'assets/logos/pomoflev_logo.png'

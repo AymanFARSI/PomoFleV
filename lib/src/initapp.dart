@@ -5,7 +5,7 @@ import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:flutter/material.dart'
     hide MenuItem
-    show Colors, Size, WidgetsFlutterBinding, debugPrint;
+    show Colors, Size, WidgetsFlutterBinding;
 
 import 'package:pomoflev/src/storage.dart';
 import 'package:pomoflev/variables/variables.dart';

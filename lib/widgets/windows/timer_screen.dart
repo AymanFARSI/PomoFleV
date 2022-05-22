@@ -1,5 +1,4 @@
 import 'package:fluent_ui/fluent_ui.dart';
-import 'package:pomoflev/variables/variables.dart';
 import 'package:pomoflev/widgets/common/clock_screen.dart';
 
 class TimerScreen extends StatelessWidget {
