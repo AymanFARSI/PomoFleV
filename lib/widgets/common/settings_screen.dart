@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pomoflev/src/storage.dart';
+import 'package:pomoflev/variables/storage_keys.dart';
 import 'package:pomoflev/variables/variables.dart';
 import 'package:pomoflev/widgets/windows/settings_item.dart';
 import 'package:window_manager/window_manager.dart';
@@ -34,6 +36,7 @@ class ScreenScreen extends StatelessWidget {
                 onToggle: (v) async {
                   isAlwaysOnTop.value = !isAlwaysOnTop.value;
                   await windowManager.setAlwaysOnTop(isAlwaysOnTop.value);
+                  writeKey(always_on_top_key, isAlwaysOnTop.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -42,6 +45,7 @@ class ScreenScreen extends StatelessWidget {
                 isChecked: isAutoStartTimer,
                 onToggle: (v) {
                   isAutoStartTimer.value = !isAutoStartTimer.value;
+                  writeKey(auto_start_timer_key, isAutoStartTimer.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -50,6 +54,7 @@ class ScreenScreen extends StatelessWidget {
                 isChecked: isAutoStartBreak,
                 onToggle: (v) {
                   isAutoStartBreak.value = !isAutoStartBreak.value;
+                  writeKey(auto_start_break_key, isAutoStartBreak.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -58,6 +63,7 @@ class ScreenScreen extends StatelessWidget {
                 isChecked: isTickSoundTimer,
                 onToggle: (v) {
                   isTickSoundTimer.value = !isTickSoundTimer.value;
+                  writeKey(tick_sound_timer_key, isTickSoundTimer.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -66,6 +72,7 @@ class ScreenScreen extends StatelessWidget {
                 isChecked: isTickSoundBreak,
                 onToggle: (v) {
                   isTickSoundBreak.value = !isTickSoundBreak.value;
+                  writeKey(tick_sound_break_key, isTickSoundBreak.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -74,6 +81,7 @@ class ScreenScreen extends StatelessWidget {
                 isChecked: isNotification,
                 onToggle: (v) {
                   isNotification.value = !isNotification.value;
+                  writeKey(notification_key, isNotification.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -82,6 +90,7 @@ class ScreenScreen extends StatelessWidget {
                 isChecked: isMinimizeToTray,
                 onToggle: (v) {
                   isMinimizeToTray.value = !isMinimizeToTray.value;
+                  writeKey(minimize_to_tray_key, isMinimizeToTray.value);
                 },
               ),
               const SizedBox(height: 15),
@@ -91,48 +100,61 @@ class ScreenScreen extends StatelessWidget {
                 onToggle: (v) {
                   isMinimizeToTrayOnClose.value =
                       !isMinimizeToTrayOnClose.value;
+                  writeKey(
+                    minimize_to_tray_on_close_key,
+                    isMinimizeToTrayOnClose.value,
+                  );
                 },
               ),
               const SizedBox(height: 15),
               const Center(
                 child: Text(
-                  'App Shortcuts',
+                  'Shortcuts Coming Soon',
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-              const SizedBox(height: 15),
-              const Center(
-                child: Text(
-                  'Toggle Timer Window',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              const Center(
-                child: Text(
-                  'Reset Timer',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              const SizedBox(height: 15),
-              const Center(
-                child: Text(
-                  'Skip Timer',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
+              // const Center(
+              //   child: Text(
+              //     'App Shortcuts',
+              //     style: TextStyle(
+              //       fontSize: 24,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 15),
+              // const Center(
+              //   child: Text(
+              //     'Toggle Timer Window',
+              //     style: TextStyle(
+              //       fontSize: 16,
+              //       fontWeight: FontWeight.normal,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 15),
+              // const Center(
+              //   child: Text(
+              //     'Reset Timer',
+              //     style: TextStyle(
+              //       fontSize: 16,
+              //       fontWeight: FontWeight.normal,
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(height: 15),
+              // const Center(
+              //   child: Text(
+              //     'Skip Timer',
+              //     style: TextStyle(
+              //       fontSize: 16,
+              //       fontWeight: FontWeight.normal,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

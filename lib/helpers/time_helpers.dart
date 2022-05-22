@@ -1,4 +1,17 @@
-// SOMETHING
+import 'package:pomoflev/variables/variables.dart';
+
+double computeCircleProgress() {
+  if (isBreak.value && currentRound.value == roundsValue.value) {
+    return computeSeconds(currentTime.value) /
+        computeSeconds(longBreakValue.value);
+  } else if (isBreak.value && currentRound.value != roundsValue.value) {
+    return computeSeconds(currentTime.value) /
+        computeSeconds(shortBreakValue.value);
+  } else {
+    return computeSeconds(currentTime.value) /
+        computeSeconds(focusValue.value);
+  }
+}
 
 int computeSeconds(DateTime temp) {
   return temp.minute * 60 + temp.second;

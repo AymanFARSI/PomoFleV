@@ -7,7 +7,6 @@ import 'package:pomoflev/widgets/common/settings_screen.dart';
 import 'package:pomoflev/widgets/windows/config_screen.dart';
 import 'package:pomoflev/widgets/windows/theme_screen.dart';
 import 'package:pomoflev/widgets/windows/timer_screen.dart';
-import 'package:pomoflev/widgets/windows/fluent_button.dart';
 import 'package:pomoflev/widgets/windows/pane_item.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:flutter/material.dart' show Icons;
@@ -95,37 +94,57 @@ class _MainWindowsState extends State<MainWindows> {
                 IconButton(
                   icon: const Icon(Icons.minimize),
                   onPressed: () async {
-                    await windowManager.minimize();
+                    isMinimizeToTray.value
+                        ? await windowManager.hide()
+                        : await windowManager.minimize();
                   },
                 ),
                 IconButton(
                   icon: const Icon(Icons.close),
                   onPressed: () async {
-                    Get.defaultDialog(
-                      title: 'Close PomoFleV',
-                      content: const Text(
-                        'Are you sure you want to close PomoFleV?',
+                    Get.dialog(
+                      FluentTheme(
+                        data: ThemeData(),
+                        child: ContentDialog(
+                          title: const Text(
+                            'Are you sure you want to close the app?',
+                          ),
+                          content: Text(
+                            !isMinimizeToTrayOnClose.value
+                                ? 'The app will be closed.'
+                                : 'You can always open it again from the tray.',
+                          ),
+                          actions: [
+                            Button(
+                              child: const Text('Cancel'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            Button(
+                              style: ButtonStyle(
+                                backgroundColor: ButtonState.all(
+                                  const Color(0xff0069ba),
+                                ),
+                              ),
+                              child: Text(
+                                !isMinimizeToTrayOnClose.value
+                                    ? 'Close'
+                                    : 'Minimize',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              onPressed: () async {
+                                Navigator.of(context).pop();
+                                !isMinimizeToTrayOnClose.value
+                                    ? await windowManager.close()
+                                    : await windowManager.hide();
+                              },
+                            ),
+                          ],
+                        ),
                       ),
-                      barrierDismissible: true,
-                      actions: [
-                        CustomFluentButton(
-                          child: TextButton(
-                            child: const Text('No'),
-                            onPressed: () {
-                              Get.back();
-                            },
-                          ),
-                        ),
-                        CustomFluentButton(
-                          child: TextButton(
-                            child: const Text('Yes'),
-                            onPressed: () async {
-                              await windowManager.close();
-                              Get.back();
-                            },
-                          ),
-                        ),
-                      ],
                     );
                   },
                 ),

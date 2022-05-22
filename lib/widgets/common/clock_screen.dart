@@ -1,8 +1,6 @@
-import 'dart:async';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:pomoflev/helpers/inapp_notif.dart';
-import 'package:pomoflev/helpers/play_sound.dart';
 import 'package:pomoflev/helpers/time_helpers.dart';
 import 'package:pomoflev/helpers/platform.dart';
 import 'package:pomoflev/variables/variables.dart';
@@ -18,17 +16,9 @@ class _ClockWidgetState extends State<ClockWidget> {
   @override
   void initState() {
     super.initState();
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (computeSeconds(currentTime.value) == 0) {
-        isContinue.value = false;
-        // TODO: send notification
-      }
-      if (isContinue.value) {
-        currentTime.value = currentTime.value.subtract(
-          const Duration(seconds: 1),
-        );
-      }
-    });
+    if (isAutoStartTimer.value) {
+      pomodoroHandler.startTimer();
+    }
   }
 
   @override
@@ -51,12 +41,10 @@ class _ClockWidgetState extends State<ClockWidget> {
                   height: 250,
                   child: CircularProgressIndicator(
                     strokeWidth: 4.5,
-                    value: computeSeconds(currentTime.value) /
-                        computeSeconds(
-                          DateTime.parse('2020-01-01T00:25:00'),
-                        ),
-                    valueColor:
-                        const AlwaysStoppedAnimation<Color>(Colors.purple),
+                    value: computeCircleProgress(),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      Colors.purple,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -81,46 +69,39 @@ class _ClockWidgetState extends State<ClockWidget> {
             ),
           ),
         ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            platformTextButton(
-              text: 'RESET',
-              onTap: () async {
-                await playSound(notifSoundPath);
-                pushInAppNotification(
-                  title: 'Reset Timer',
-                  body: 'Timer has been reset',
-                );
-                currentTime.value = DateTime.parse('2020-01-01T00:25:00');
-                isContinue.value = false;
-              },
-            ),
-            const SizedBox(width: 30),
-            GestureDetector(
-              onTap: () {
-                isContinue.value = !isContinue.value;
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.white,
-                  border: Border.all(
-                    color: Colors.black,
-                    width: 1.5,
-                  ),
-                ),
-                child: Obx(
-                  () => Icon(
-                    !isContinue.value ? Icons.pause : Icons.play_arrow_rounded,
-                    color: Colors.black87,
-                    size: 32,
-                  ),
-                ),
+        const SizedBox(height: 15),
+        GestureDetector(
+          onTap: () {
+            if (isContinue.value) {
+              pomodoroHandler.pauseTimer();
+            } else {
+              pomodoroHandler.startTimer();
+            }
+          },
+          onLongPress: () {
+            pushInAppNotification(
+              title: 'Reset Timer',
+              body: 'Timer has been reset',
+            );
+            pomodoroHandler.resetTimer();
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.white,
+              border: Border.all(
+                color: Colors.black,
+                width: 1.5,
               ),
             ),
-          ],
+            child: Obx(
+              () => Icon(
+                !isContinue.value ? Icons.pause : Icons.play_arrow_rounded,
+                color: Colors.black87,
+                size: 32,
+              ),
+            ),
+          ),
         ),
         Expanded(child: Container()),
         Padding(
@@ -134,13 +115,12 @@ class _ClockWidgetState extends State<ClockWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Obx(
-                    () => Text('${currentRound.value}/4'),
+                    () => Text('${currentRound.value}/${roundsValue.value}'),
                   ),
                   platformTextButton(
                     text: 'RESET',
                     onTap: () {
-                      // TODO Reset rounds
-                      currentRound.value = 1;
+                      pomodoroHandler.resetRounds();
                     },
                   ),
                 ],
@@ -152,8 +132,7 @@ class _ClockWidgetState extends State<ClockWidget> {
                   platformIconButton(
                     icon: Icons.skip_next,
                     onTap: () {
-                      // TODO Skip if == rounds => break
-                      currentRound.value++;
+                      pomodoroHandler.nextRound(justSkip: true);
                     },
                   ),
                   Obx(
@@ -175,6 +154,23 @@ class _ClockWidgetState extends State<ClockWidget> {
           ),
         ),
       ],
+    );
+  }
+}
+
+class TimerTitle extends StatelessWidget {
+  const TimerTitle({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Timer: ${isBreak.value ? 'Break' : 'Focus'}',
+        style: const TextStyle(
+          fontSize: 36,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }

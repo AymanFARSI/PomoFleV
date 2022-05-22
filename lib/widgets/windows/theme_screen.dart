@@ -5,15 +5,21 @@ class ThemeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScaffoldPage(
-      header: const PageHeader(
+    return const ScaffoldPage(
+      header: PageHeader(
         title: Center(child: Text('Theming')),
       ),
       content: SizedBox(
         width: double.infinity,
         height: double.infinity,
-        child: Container(
-          color: Colors.yellow,
+        child: Center(
+          child: Text(
+            'Coming soon',
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );

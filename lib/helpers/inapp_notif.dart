@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:pomoflev/helpers/play_sound.dart';
+import 'package:pomoflev/variables/variables.dart';
 
-pushInAppNotification({
+Future<void> pushInAppNotification({
   required String title,
   required String body,
-}) {
-  return showOverlayNotification(
+}) async {
+  await playSound(notifSoundPath);
+  showOverlayNotification(
     (context) {
       return Padding(
         padding: const EdgeInsets.only(
-          top: 12.0,
+          top: 15.0,
           right: 100,
           left: 100,
         ),
@@ -41,6 +44,6 @@ pushInAppNotification({
         ),
       );
     },
-    duration: const Duration(seconds: 7),
+    duration: const Duration(seconds: 5),
   );
 }
