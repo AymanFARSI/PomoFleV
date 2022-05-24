@@ -14,7 +14,7 @@ class PomodoroHandler {
       }
       if (isContinue.value) {
         currentTime.value = currentTime.value.subtract(
-          const Duration(seconds: 60),
+          const Duration(seconds: 1),
         );
       }
     });
