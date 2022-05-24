@@ -34,7 +34,9 @@ initSystemTray() async {
       items: items,
     ),
   );
-  await trayManager.setToolTip('PomoFlev by FARSI Ayman');
+  if (!Platform.isLinux) {
+    await trayManager.setToolTip('PomoFlev by FARSI Ayman');
+  }
 }
 
 initDesktop() async {
@@ -48,7 +50,8 @@ initDesktop() async {
     center: true,
     backgroundColor: Colors.transparent,
     skipTaskbar: false,
-    titleBarStyle: TitleBarStyle.hidden,
+    titleBarStyle:
+        Platform.isLinux ? TitleBarStyle.normal : TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();

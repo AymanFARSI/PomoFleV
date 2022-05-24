@@ -8,10 +8,8 @@ class MainLinux extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'PomoFleV',
-      home: YaruTheme(
-        child: Center(
-          child: Text('Hello Linux'),
-        ),
+      home: Center(
+        child: Text('Hello Linux'),
       ),
     );
   }
