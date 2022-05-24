@@ -2,7 +2,6 @@ import 'dart:ui' as ui;
 import 'package:get/get.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide MenuItem;
 import 'package:system_theme/system_theme.dart';
-import 'package:tray_manager/tray_manager.dart';
 import 'package:pomoflev/variables/variables.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:pomoflev/widgets/windows/pane_item.dart';
@@ -20,49 +19,8 @@ class MainWindows extends StatefulWidget {
   State<MainWindows> createState() => _MainWindowsState();
 }
 
-class _MainWindowsState extends State<MainWindows> with TrayListener {
+class _MainWindowsState extends State<MainWindows> {
   int _index = 0;
-
-  @override
-  void initState() {
-    trayManager.addListener(this);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    trayManager.removeListener(this);
-    super.dispose();
-  }
-
-  @override
-  void onTrayIconMouseDown() {
-    trayManager.popUpContextMenu();
-  }
-
-  @override
-  void onTrayIconRightMouseDown() async {
-    if (await windowManager.isVisible()) {
-      await windowManager.hide();
-    } else {
-      await windowManager.show();
-    }
-  }
-
-  @override
-  void onTrayIconRightMouseUp() {
-    // do something
-  }
-
-  @override
-  void onTrayMenuItemClick(MenuItem item) {
-    debugPrint(item.label);
-    if (item.key == 'show_window') {
-      debugPrint('show_window');
-    } else if (item.key == 'exit_app') {
-      debugPrint('exit_app');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

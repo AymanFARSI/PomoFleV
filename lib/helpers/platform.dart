@@ -1,9 +1,12 @@
 import 'dart:io';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' hide TextButton, IconButton;
+import 'package:get/get.dart';
 import 'package:pomoflev/widgets/android/main_android.dart';
 import 'package:pomoflev/widgets/linux/main_linux.dart';
+import 'package:pomoflev/widgets/linux/settings_item_linux.dart';
 import 'package:pomoflev/widgets/windows/main_windows.dart';
+import 'package:pomoflev/widgets/windows/settings_item_windows.dart';
 
 Widget platformApp() {
   // Windows
@@ -79,5 +82,30 @@ Widget platformIconButton({
         color: const Color.fromARGB(255, 32, 32, 32),
       ),
     );
+  }
+}
+
+Widget platformToggleSwitch({
+  required String title,
+  required RxBool isChecked,
+  required Function(bool) onToggle,
+}) {
+  // Windows
+  if (Platform.isWindows) {
+    return SettingsItemWindows(
+      title: title,
+      isChecked: isChecked,
+      onToggle: onToggle,
+    );
+  } else if (Platform.isLinux) {
+    // Linux
+    return SettingsItemLinux(
+      title: title,
+      isChecked: isChecked,
+      onToggle: onToggle,
+    );
+  } else {
+    // Android by default
+    return Text(title);
   }
 }

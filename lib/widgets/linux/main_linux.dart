@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pomoflev/widgets/linux/linux_wrapper.dart';
 import 'package:yaru/yaru.dart';
 
 class MainLinux extends StatelessWidget {
@@ -6,10 +7,17 @@ class MainLinux extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      darkTheme: ThemeData.dark(),
+      theme: ThemeData.light(),
       title: 'PomoFleV',
-      home: Center(
-        child: Text('Hello Linux'),
+      home: const YaruTheme(
+        data: YaruThemeData(
+          variant: YaruVariant.red,
+          themeMode: ThemeMode.system,
+        ),
+        child: LinuxWrapper(),
       ),
     );
   }

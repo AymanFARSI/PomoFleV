@@ -50,8 +50,7 @@ initDesktop() async {
     center: true,
     backgroundColor: Colors.transparent,
     skipTaskbar: false,
-    titleBarStyle:
-        Platform.isLinux ? TitleBarStyle.normal : TitleBarStyle.hidden,
+    titleBarStyle: TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.show();

@@ -2,12 +2,12 @@ import 'package:get/get.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 
 // ignore: must_be_immutable
-class SettingsItem extends StatelessWidget {
+class SettingsItemWindows extends StatelessWidget {
   String title;
   RxBool isChecked;
   Function(bool) onToggle;
 
-  SettingsItem({
+  SettingsItemWindows({
     Key? key,
     required this.title,
     required this.isChecked,

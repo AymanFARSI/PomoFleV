@@ -25,6 +25,8 @@ dependencies:
   tray_manager: ^0.1.7
   about: ^2.1.1
   icons_launcher: ^1.1.8
+  titlebar_buttons: ^1.0.0
+  yaru_icons: ^0.2.1
 
 dev_dependencies:
   flutter_test:

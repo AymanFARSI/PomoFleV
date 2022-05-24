@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:pomoflev/helpers/platform.dart';
 import 'package:pomoflev/src/initapp.dart';
 import 'package:pomoflev/src/storage.dart';
 import 'package:pomoflev/variables/storage_keys.dart';
 import 'package:pomoflev/variables/variables.dart';
-import 'package:pomoflev/widgets/windows/settings_item.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -32,7 +32,7 @@ class ScreenScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Always On Top',
                 isChecked: isAlwaysOnTop,
                 onToggle: (v) async {
@@ -42,7 +42,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Auto Start Timer',
                 isChecked: isAutoStartTimer,
                 onToggle: (v) {
@@ -51,7 +51,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Auto Start Break',
                 isChecked: isAutoStartBreak,
                 onToggle: (v) {
@@ -60,7 +60,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Tick Sound Timer',
                 isChecked: isTickSoundTimer,
                 onToggle: (v) {
@@ -69,7 +69,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Tick Sound Break',
                 isChecked: isTickSoundBreak,
                 onToggle: (v) {
@@ -78,7 +78,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Notification',
                 isChecked: isNotification,
                 onToggle: (v) {
@@ -87,7 +87,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Minimize to Tray',
                 isChecked: isMinimizeToTray,
                 onToggle: (v) async {
@@ -102,7 +102,7 @@ class ScreenScreen extends StatelessWidget {
                 },
               ),
               const SizedBox(height: 15),
-              SettingsItem(
+              platformToggleSwitch(
                 title: 'Minimize to Tray on Close',
                 isChecked: isMinimizeToTrayOnClose,
                 onToggle: (v) async {
