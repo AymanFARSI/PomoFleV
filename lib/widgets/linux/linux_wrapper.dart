@@ -3,7 +3,10 @@ import 'package:get/get.dart';
 import 'package:pomoflev/variables/variables.dart';
 import 'package:pomoflev/widgets/common/about_screen.dart';
 import 'package:pomoflev/widgets/common/settings_screen.dart';
+import 'package:pomoflev/widgets/common/timer_screen_linux.dart';
+import 'package:pomoflev/widgets/linux/config_screen_linux.dart';
 import 'package:pomoflev/widgets/linux/linux_variables.dart';
+import 'package:pomoflev/widgets/linux/theme_screen_linux.dart';
 import 'package:titlebar_buttons/titlebar_buttons.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:yaru_icons/yaru_icons.dart';
@@ -66,16 +69,10 @@ class LinuxWrapper extends StatelessWidget {
           ],
         ),
         body: [
-          Center(
-            child: Text('Home ${currentPage.value}'),
-          ),
-          Center(
-            child: Text('Config ${currentPage.value}'),
-          ),
-          Center(
-            child: Text('Themes ${currentPage.value}'),
-          ),
-          const ScreenScreen(),
+          const TimerScreenLinux(),
+          const ConfigScreenLinux(),
+          const ThemeScreenLinux(),
+          const SettingsScreen(),
           const AboutScreen(),
         ].elementAt(currentPage.value),
         bottomNavigationBar: BottomNavigationBar(

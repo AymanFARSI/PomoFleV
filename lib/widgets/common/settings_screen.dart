@@ -7,8 +7,8 @@ import 'package:pomoflev/variables/variables.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 
-class ScreenScreen extends StatelessWidget {
-  const ScreenScreen({Key? key}) : super(key: key);
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

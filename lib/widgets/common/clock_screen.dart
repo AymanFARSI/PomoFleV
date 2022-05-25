@@ -115,8 +115,16 @@ class _ClockWidgetState extends State<ClockWidget> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Obx(
-                    () => Text('${currentRound.value}/${roundsValue.value}'),
+                    () => Text(
+                      '${currentRound.value}/${roundsValue.value}',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: Colors.black87,
+                      ),
+                    ),
                   ),
+                  const SizedBox(height: 5),
                   platformTextButton(
                     text: 'RESET',
                     onTap: () {

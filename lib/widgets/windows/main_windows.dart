@@ -1,14 +1,14 @@
 import 'dart:ui' as ui;
 import 'package:get/get.dart';
 import 'package:fluent_ui/fluent_ui.dart' hide MenuItem;
+import 'package:pomoflev/widgets/windows/config_screen_windows.dart';
+import 'package:pomoflev/widgets/windows/theme_screen_windows.dart';
 import 'package:system_theme/system_theme.dart';
 import 'package:pomoflev/variables/variables.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:pomoflev/widgets/windows/pane_item.dart';
 import 'package:pomoflev/widgets/common/about_screen.dart';
-import 'package:pomoflev/widgets/windows/theme_screen.dart';
-import 'package:pomoflev/widgets/windows/timer_screen.dart';
-import 'package:pomoflev/widgets/windows/config_screen.dart';
+import 'package:pomoflev/widgets/windows/timer_screen_windows.dart';
 import 'package:pomoflev/widgets/common/settings_screen.dart';
 import 'package:flutter/material.dart' show Icons hide MenuItem;
 
@@ -192,9 +192,9 @@ class _MainWindowsState extends State<MainWindows> {
           index: _index,
           children: const [
             TimerScreen(),
-            ConfigScreen(),
-            ThemeScreen(),
-            ScreenScreen(),
+            ConfigScreenWindows(),
+            ThemeScreenWindows(),
+            SettingsScreen(),
             AboutScreen(),
           ],
         ),

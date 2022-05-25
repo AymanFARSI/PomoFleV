@@ -17,29 +17,31 @@ class SettingsItemLinux extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(7.0),
-      elevation: 1.5,
+      elevation: 2,
       clipBehavior: Clip.antiAlias,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(9),
       ),
-      child: Row(
-        children: [
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
+              ),
             ),
-          ),
-          Expanded(child: Container()),
-          Obx(
-            () => Switch(
-              value: isChecked.value,
-              onChanged: onToggle,
+            Expanded(child: Container()),
+            Obx(
+              () => Switch(
+                value: isChecked.value,
+                onChanged: onToggle,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

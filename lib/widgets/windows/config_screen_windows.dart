@@ -1,13 +1,14 @@
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/material.dart' show AlertDialog;
 import 'package:get/get.dart';
+import 'package:pomoflev/helpers/platform.dart';
 import 'package:pomoflev/helpers/time_helpers.dart';
 import 'package:pomoflev/src/storage.dart';
 import 'package:pomoflev/variables/storage_keys.dart';
 import 'package:pomoflev/variables/variables.dart';
 
-class ConfigScreen extends StatelessWidget {
-  const ConfigScreen({Key? key}) : super(key: key);
+class ConfigScreenWindows extends StatelessWidget {
+  const ConfigScreenWindows({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -327,60 +328,7 @@ class ConfigScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomBar: Padding(
-        padding: const EdgeInsets.only(
-          bottom: 12,
-          top: 15,
-        ),
-        child: Button(
-          onPressed: () async {
-            await writeKey(focus_key, '25');
-            await writeKey(short_break_key, '05');
-            await writeKey(long_break_key, '15');
-            await writeKey(rounds_key, '4');
-            focusValue.value = getDateTime(minutes: '25');
-            shortBreakValue.value = getDateTime(minutes: '05');
-            longBreakValue.value = getDateTime(minutes: '15');
-            roundsValue.value = 4;
-          },
-          style: ButtonStyle(
-            backgroundColor: ButtonState.all(Colors.white),
-            foregroundColor: ButtonState.all(Colors.black),
-            border: ButtonState.all(
-              const BorderSide(
-                color: Colors.black,
-                width: 0.3,
-              ),
-            ),
-            elevation: ButtonState.all(3),
-            shape: ButtonState.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-            ),
-            textStyle: ButtonState.all(
-              const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.normal,
-              ),
-            ),
-            shadowColor: ButtonState.all(Colors.black),
-            padding: ButtonState.all(
-              const EdgeInsets.symmetric(
-                horizontal: 30,
-                vertical: 7,
-              ),
-            ),
-          ),
-          child: const Text(
-            'Reset Config',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-        ),
-      ),
+      bottomBar: platformResetButton(),
     );
   }
 }

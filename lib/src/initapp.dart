@@ -29,11 +29,13 @@ initSystemTray() async {
         ? 'assets/logos/app_icon.ico'
         : 'assets/logos/pomoflev_logo.png',
   );
-  await trayManager.setContextMenu(
-    Menu(
-      items: items,
-    ),
-  );
+  if (isMinimizeToTray.value || isMinimizeToTrayOnClose.value) {
+    await trayManager.setContextMenu(
+      Menu(
+        items: items,
+      ),
+    );
+  }
   if (!Platform.isLinux) {
     await trayManager.setToolTip('PomoFlev by FARSI Ayman');
   }
