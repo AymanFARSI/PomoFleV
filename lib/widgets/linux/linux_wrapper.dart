@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:pomoflev/variables/variables.dart';
 import 'package:pomoflev/widgets/common/about_screen.dart';
 import 'package:pomoflev/widgets/common/settings_screen.dart';
-import 'package:pomoflev/widgets/common/timer_screen_linux.dart';
+import 'package:pomoflev/widgets/linux/timer_screen_linux.dart';
 import 'package:pomoflev/widgets/linux/config_screen_linux.dart';
 import 'package:pomoflev/widgets/linux/linux_variables.dart';
 import 'package:pomoflev/widgets/linux/theme_screen_linux.dart';
