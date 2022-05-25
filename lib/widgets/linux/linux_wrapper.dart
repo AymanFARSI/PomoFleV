@@ -1,3 +1,4 @@
+import 'package:adwaita_icons/adwaita_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pomoflev/variables/variables.dart';
@@ -9,7 +10,6 @@ import 'package:pomoflev/widgets/linux/linux_variables.dart';
 import 'package:pomoflev/widgets/linux/theme_screen_linux.dart';
 import 'package:titlebar_buttons/titlebar_buttons.dart';
 import 'package:window_manager/window_manager.dart';
-import 'package:yaru_icons/yaru_icons.dart';
 
 class LinuxWrapper extends StatelessWidget {
   const LinuxWrapper({Key? key}) : super(key: key);
@@ -45,12 +45,12 @@ class LinuxWrapper extends StatelessWidget {
                   await windowManager.setAlwaysOnTop(isAlwaysOnTop.value);
                 },
                 icon: isAlwaysOnTop.value
-                    ? const Icon(
-                        YaruIcons.media_optical_filled,
+                    ? const AdwaitaIcon(
+                        AdwaitaIcons.circle_filled,
                         color: Colors.black,
                       )
-                    : const Icon(
-                        YaruIcons.media_optical,
+                    : const AdwaitaIcon(
+                        AdwaitaIcons.circle_outline_thin,
                         color: Colors.grey,
                       ),
               );
@@ -79,23 +79,33 @@ class LinuxWrapper extends StatelessWidget {
           elevation: 3,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(YaruIcons.home),
+              icon: AdwaitaIcon(
+                AdwaitaIcons.user_home,
+              ),
               label: ('Home'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(YaruIcons.sidebar),
+              icon: AdwaitaIcon(
+                AdwaitaIcons.configure,
+              ),
               label: ('Config'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(YaruIcons.colors),
+              icon: AdwaitaIcon(
+                AdwaitaIcons.color_select,
+              ),
               label: ('Themes'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(YaruIcons.settings),
+              icon: AdwaitaIcon(
+                AdwaitaIcons.settings,
+              ),
               label: ('Settings'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(YaruIcons.view_more_horizontal),
+              icon: AdwaitaIcon(
+                AdwaitaIcons.help_about,
+              ),
               label: ('About'),
             ),
           ],

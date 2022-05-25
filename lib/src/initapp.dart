@@ -45,7 +45,6 @@ initDesktop() async {
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = WindowOptions(
     minimumSize: const Size(500, 600),
-    size: const Size(500, 600),
     maximumSize: const Size(750, 850),
     title: 'PomoFleV',
     alwaysOnTop: isAlwaysOnTop.value,
@@ -55,6 +54,7 @@ initDesktop() async {
     titleBarStyle: TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.setSize(const Size(500, 600));
     await windowManager.show();
     await windowManager.focus();
   });

@@ -2,7 +2,7 @@
 
 import 'dart:io';
 import 'package:fluent_ui/fluent_ui.dart' as FluentUI hide Colors;
-import 'package:flutter/material.dart' hide TextButton, ButtonStyle;
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pomoflev/helpers/time_helpers.dart';
 import 'package:pomoflev/src/storage.dart';
@@ -40,6 +40,10 @@ Widget platformTextButton({
   } else if (Platform.isLinux) {
     // Linux
     return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.black),
+        foregroundColor: MaterialStateProperty.all(Colors.white),
+      ),
       onPressed: onTap,
       child: Text(text),
     );
@@ -178,6 +182,10 @@ Widget platformResetButton() {
         top: 15,
       ),
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.black),
+          foregroundColor: MaterialStateProperty.all(Colors.white),
+        ),
         onPressed: () async {
           await writeKey(focus_key, '25');
           await writeKey(short_break_key, '05');

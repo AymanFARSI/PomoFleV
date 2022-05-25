@@ -18,7 +18,7 @@ dependencies:
   get: ^4.6.3
   flutter_secure_storage: ^5.0.2
   fluent_ui: ^3.12.0
-  yaru: ^0.3.2
+  # yaru: ^0.3.2
   system_theme: ^2.0.0
   audioplayers: ^1.0.0-rc.4
   overlay_support: ^2.0.0
@@ -26,7 +26,10 @@ dependencies:
   about: ^2.1.1
   icons_launcher: ^1.1.8
   titlebar_buttons: ^1.0.0
-  yaru_icons: ^0.2.1
+  # yaru_icons: ^0.2.1
+  libadwaita: ^1.2.0
+  adwaita: ^0.5.2
+  adwaita_icons: ^0.2.1
 
 dev_dependencies:
   flutter_test:

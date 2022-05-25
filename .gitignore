@@ -49,3 +49,6 @@ app.*.map.json
 # custom
 /release/
 /pomoflev_logos/
+/AppDir/
+PomoFleV-0.2.2-x86_64.AppImage
+/appimage-build/

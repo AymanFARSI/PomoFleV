@@ -1,3 +1,4 @@
+import 'package:adwaita_icons/adwaita_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pomoflev/helpers/platform.dart';
@@ -5,7 +6,6 @@ import 'package:pomoflev/helpers/time_helpers.dart';
 import 'package:pomoflev/src/storage.dart';
 import 'package:pomoflev/variables/storage_keys.dart';
 import 'package:pomoflev/variables/variables.dart';
-import 'package:yaru_icons/yaru_icons.dart';
 
 class ConfigScreenLinux extends StatelessWidget {
   const ConfigScreenLinux({Key? key}) : super(key: key);
@@ -31,19 +31,22 @@ class ConfigScreenLinux extends StatelessWidget {
                     const Text(
                       'Focus Time',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(YaruIcons.refresh),
+                      icon: const AdwaitaIcon(
+                        AdwaitaIcons.step_back,
+                        color: Colors.purple,
+                      ),
                       onPressed: () {
                         Get.dialog(
                           AlertDialog(
                             title: const Text('Reset'),
                             content: const Text(
                               'Are you sure you want to reset the focus time to 25 minutes?',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 18),
                             ),
                             actions: [
                               ElevatedButton(
@@ -73,7 +76,6 @@ class ConfigScreenLinux extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
                 Obx(
                   () => SizedBox(
                     width: 200,
@@ -103,19 +105,22 @@ class ConfigScreenLinux extends StatelessWidget {
                     const Text(
                       'Short Break Time',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(YaruIcons.refresh),
+                      icon: const AdwaitaIcon(
+                        AdwaitaIcons.step_back,
+                        color: Colors.purple,
+                      ),
                       onPressed: () {
                         Get.dialog(
                           AlertDialog(
                             title: const Text('Reset'),
                             content: const Text(
                               'Are you sure you want to reset the short break time to 5 minutes?',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 18),
                             ),
                             actions: [
                               ElevatedButton(
@@ -147,7 +152,6 @@ class ConfigScreenLinux extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
                 Obx(
                   () => SizedBox(
                     width: 200,
@@ -181,19 +185,22 @@ class ConfigScreenLinux extends StatelessWidget {
                     const Text(
                       'Long Break Time',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(YaruIcons.refresh),
+                      icon: const AdwaitaIcon(
+                        AdwaitaIcons.step_back,
+                        color: Colors.purple,
+                      ),
                       onPressed: () {
                         Get.dialog(
                           AlertDialog(
                             title: const Text('Reset'),
                             content: const Text(
                               'Are you sure you want to reset the long break time to 15 minutes?',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 18),
                             ),
                             actions: [
                               ElevatedButton(
@@ -225,7 +232,6 @@ class ConfigScreenLinux extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
                 Obx(
                   () => SizedBox(
                     width: 200,
@@ -259,19 +265,22 @@ class ConfigScreenLinux extends StatelessWidget {
                     const Text(
                       'Rounds',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 18,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
                     IconButton(
-                      icon: const Icon(YaruIcons.refresh),
+                      icon: const AdwaitaIcon(
+                        AdwaitaIcons.step_back,
+                        color: Colors.purple,
+                      ),
                       onPressed: () {
                         Get.dialog(
                           AlertDialog(
                             title: const Text('Reset'),
                             content: const Text(
                               'Are you sure you want to reset the rounds number to 4 rounds?',
-                              style: TextStyle(fontSize: 16),
+                              style: TextStyle(fontSize: 18),
                             ),
                             actions: [
                               ElevatedButton(
@@ -301,7 +310,6 @@ class ConfigScreenLinux extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 5),
                 Obx(
                   () => SizedBox(
                     width: 200,
